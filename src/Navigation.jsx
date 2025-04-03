@@ -1,8 +1,16 @@
 import { Outlet,NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./custom-hooks/CrudContext";
 
 
 export function NAV(){
+   const {user}=useAuth();
+
+    const navigate=useNavigate();
+    if(user&&user!=[])
+        {
+            navigate('/');
+        }
     return(
         <>
         <nav className="d-flex justify-content-center gap-5 py-5 bg-primary">

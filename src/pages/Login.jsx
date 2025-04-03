@@ -1,12 +1,10 @@
 import React,{useRef,useState} from "react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../custom-hooks/CrudContext";
 
 const Login=()=>
 {
-const [user,setUser]=useState({name:"",password:""});
+const {user,logged}=useAuth();
 const [message,setMessage]=useState("");
-const [userExists,setState]=useState(false);
-const navigate=useNavigate();
 
 let nameRef=useRef(null);
 let passRef=useRef(null);
@@ -20,8 +18,6 @@ e.preventDefault();
 let name=nameRef.current.value;
 let pass=passRef.current.value;
 const checkUser={name:name,password:pass};
-setUser(checkUser);
-console.log(checkUser)
 
 fetch("http://localhost:3000/src/services/login.php",{
 method:"POST",
@@ -37,18 +33,12 @@ body:JSON.stringify(checkUser)
     console.log(data.exists)
     if(data.exists==="yes")
     {
-    setState(true);
+    logged(data["user_id"],data["user_name"]);
     }})
     
 nameRef.current.value="";
 passRef.current.value="";
-
-if(userExists)
-{
-navigate('/');
 }
-}
-
 
 return(
     <>

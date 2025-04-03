@@ -4,7 +4,7 @@ import React,{useState,useRef} from "react";
 
 const Register=()=>
 {
-const [user,setUser]=useState({name:"",password:""});
+const [user,addUser]=useState({name:"",password:""});
 const [message,setMessage]=useState("");
 let nameRef=useRef(null);
 let passRef=useRef(null);
@@ -18,7 +18,7 @@ e.preventDefault();
 let name=nameRef.current.value;
 let pass=passRef.current.value;
 const newUser={name:name,password:pass};
-setUser(newUser);
+addUser(newUser);
 
 fetch("http://localhost:3000/src/services/register.php",{
 method:"POST",

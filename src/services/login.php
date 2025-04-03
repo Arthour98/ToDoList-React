@@ -23,6 +23,7 @@ if ($data) {
                 "message" => "Login successfull",
                 "exists" => "yes"
             ]
+
         );
     } else {
         echo json_encode([
