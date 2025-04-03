@@ -7,10 +7,7 @@ export function NAV(){
    const {user}=useAuth();
 
     const navigate=useNavigate();
-    if(user&&user!=[])
-        {
-            navigate('/');
-        }
+
     return(
         <>
         <nav className="d-flex justify-content-center gap-5 py-5 bg-primary">

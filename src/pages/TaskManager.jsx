@@ -12,7 +12,17 @@ const TaskManager=()=>
 
     useEffect(()=>
     {
-    fetch("http://localhost:3000/src/services/getTasks.php")
+    const user_id=user["user_id"];
+    fetch("http://localhost:3000/src/services/getTasks.php",
+        {
+        method:"POST",
+        headers:
+        {
+        "Content-Type":"application/json"
+        },
+        body:JSON.stringify(user_id)
+        }
+    )
     .then(response=>{return response.json()})
     .then((data)=>
     {
@@ -37,7 +47,7 @@ const TaskManager=()=>
         fetch("http://localhost:3000/src/services/addTask.php",
         {
         method:"POST",
-        header:
+        headers:
         {
         "Content-Type":"applicaton/json"
         },
@@ -53,9 +63,9 @@ const TaskManager=()=>
       
     return(
         <>
-        <div class="container-fluid">
-        <div class="row gap-5 justify-content-center">
-            <div class="col-12 d-flex justify-content-center">
+        <div className="container-fluid">
+        <div className="row gap-5 justify-content-center">
+            <div className="col-12 d-flex justify-content-center">
         <form className="form-control mt-3 p-5 w-50" onSubmit={addTask}>
             <label className="form-label">
                 Set your task :
@@ -64,7 +74,7 @@ const TaskManager=()=>
             <input type="submit" value="Add" className="btn btn-primary rounded-3 mt-2 px-4"/>
         </form>
         </div>
-            <div class="col-6 d-flex  border border-1 border-dark">
+            <div className="col-6 d-flex  border border-1 border-dark">
                 <ul>
                     {tasks.map(task=>
                         {
