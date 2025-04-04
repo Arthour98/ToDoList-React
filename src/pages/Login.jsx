@@ -1,6 +1,6 @@
 import React,{useRef,useState} from "react";
 import { useAuth } from "../custom-hooks/CrudContext";
-
+import { useNavigate } from "react-router-dom";
 const Login=()=>
 {
 const {user,logged}=useAuth();
@@ -8,7 +8,7 @@ const [message,setMessage]=useState("");
 
 let nameRef=useRef(null);
 let passRef=useRef(null);
-
+const navigate=useNavigate();
 
 
 
@@ -30,14 +30,15 @@ body:JSON.stringify(checkUser)
 .then((data)=>
     {
     setMessage(data.message);
-    console.log(data.exists)
-    if(data.exists==="yes")
-    {
     logged(data["user_id"],data["user_name"]);
-    }})
+    })
     
 nameRef.current.value="";
 passRef.current.value="";
+if(user)
+{
+navigate('/') 
+}
 }
 
 return(

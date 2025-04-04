@@ -1,6 +1,23 @@
 body
 {
+background-color:rgba(1,1,1,0.9);
 width:100%;
 height:100%;
 overflow-x:hidden;
+}
+.flex-100
+{
+flex:100%;
+}
+.flex-50
+{
+    flex:50%;
+}
+.cursor-pointer
+{
+    cursor:pointer;
+}
+.row-gap-10
+{
+row-gap:10%;
 }

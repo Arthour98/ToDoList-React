@@ -21,14 +21,14 @@ if ($data) {
         echo json_encode(
             [
                 "message" => "Login successfull",
-                "exists" => "yes"
+                "user_id" => $user["user_id"],
+                "user_name" => $user["user_name"]
             ]
 
         );
     } else {
         echo json_encode([
-            "message" => "Invalid username or password",
-            "exists"  => "no"
+            "message" => "Invalid username or password"
         ]);
     }
     exit;

@@ -1,5 +1,12 @@
+
+import { useNavigate } from "react-router-dom";
+
 const Logout=()=>
 {
-    return <h3>Logout</h3>
+const navigate=useNavigate();
+const {user,loggedOut}=useAuth();
+    loggedOut();
+    navigate("/login");
+
 }
 export default Logout;
