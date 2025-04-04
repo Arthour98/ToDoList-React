@@ -31,6 +31,7 @@ body:JSON.stringify(checkUser)
     {
     setMessage(data.message);
     logged(data["user_id"],data["user_name"]);
+    navigate('/');
     })
     
 nameRef.current.value="";

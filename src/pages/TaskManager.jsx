@@ -21,6 +21,8 @@ const TaskManager=()=>
 
     useEffect(()=>
     {
+        if(user)
+        {
     const user_id={user_id:user["user_id"]};
     console.log(user_id);
     fetch("http://localhost:3000/src/services/getTasks.php",
@@ -37,7 +39,7 @@ const TaskManager=()=>
     .then((data)=>
     {
     setTasks(data.reverse());
-    })
+    })}
     },[user]);
 
 

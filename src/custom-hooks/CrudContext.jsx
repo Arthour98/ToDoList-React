@@ -7,10 +7,11 @@ const CrudContext=createContext();
 
 export const CrudProvider=({children})=>
 {
-const [user,setUser]=useState((user)=>
+const [user,setUser]=useState(()=>
 {
-return user?JSON.parse(localStorage.getItem("user")):[];
-});
+   return  JSON.parse(localStorage.getItem("user"));
+})
+
 
 
 useEffect((currentUser)=>
@@ -23,11 +24,13 @@ const logged=(userId,userName)=>
 {
 const currentUser={user_id:userId,user_name:userName};
 localStorage.setItem("user",JSON.stringify(currentUser));
+setUser(currentUser);
 }
 
 const loggedOut=()=>
 {
-localStorage.clear();
+    localStorage.removeItem("user")
+    setUser(null);
 }
 
 
